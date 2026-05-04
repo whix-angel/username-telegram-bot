@@ -46,8 +46,9 @@ async def check_username(name):
     except:
         return True
 
-@bot.on(events.NewMessage)
+@bot.on(events.NewMessage(incoming=True))
 async def commands(event):
+    print(f"Получено сообщение: {event.raw_text}")
     global searching
     text = event.raw_text.lower().strip()
 
